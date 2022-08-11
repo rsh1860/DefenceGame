@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
 
         float distance = Vector3.Distance(target.position, transform.position);
 
-        if (distance <= 0.5f)
+        if (distance <= 0.1f)
         {
             GetNextPoint();
         }

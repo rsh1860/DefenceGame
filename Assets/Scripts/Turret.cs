@@ -6,14 +6,24 @@ public class Turret : MonoBehaviour
 {
     private GameObject target;
 
-    public Transform partToRotate;
+    [Header("Attributes")]
 
     public float attackRange = 15f;
 
+    public float timerFire = 1.0f;
+    private float fireCountdown = 0f;
+
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+
+    [Header("Unity Setup")]
+
+    public Transform partToRotate;
+
     public float turnSpeed = 5f;
 
-    public float timerSearch = 0.5f;
-    private float countdown = 0f;
+    //public float timerSearch = 0.5f;
+    //private float countdown = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +47,31 @@ public class Turret : MonoBehaviour
         if (target == null)
             return;
 
+        LockOn();
+        
+        if (fireCountdown <= 0f)
+        {
+            Shoot();
+
+            fireCountdown = timerFire;
+        }
+        fireCountdown -= Time.deltaTime;
+
+    }
+
+    private void Shoot()
+    {
+        Debug.Log("Shoot");
+        GameObject bulletGo = (GameObject)Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+
+        Bullet bullet = bulletGo.GetComponent<Bullet>();
+
+        if (bullet != null)
+            bullet.SetTarget(target.transform);
+    }
+
+    private void LockOn()
+    {
         Vector3 dir = target.transform.position - this.transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         //partToRotate.rotation = lookRotation;

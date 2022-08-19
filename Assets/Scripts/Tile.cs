@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Tile : MonoBehaviour
 {
@@ -28,13 +29,35 @@ public class Tile : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (turret != null)
+        if(EventSystem.current.IsPointerOverGameObject())
+        {
             return;
+        }
+        //중복된 자리에 설치하는 것을 막기
+        if (turret != null) 
+        {
+            return;
+        }
+        //버튼을 누르지 않았을 때 설치하는 것을 막기
+        if (BuildManager.instance.GetTurretToBuild() == null) 
+        {
+            return;
+        }
+
         turret = (GameObject)Instantiate(BuildManager.instance.GetTurretToBuild(), this.transform.position + offsetPos, Quaternion.identity);
     }
 
     private void OnMouseEnter()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+        if (BuildManager.instance.GetTurretToBuild() == null)
+        {
+            return;
+        }
+
         //render.material.color = hoverColor;
         render.material = hoverMaterial;
     }

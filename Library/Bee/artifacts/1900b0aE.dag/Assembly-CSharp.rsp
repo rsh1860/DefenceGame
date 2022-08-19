@@ -342,6 +342,7 @@
 "Assets/Scripts/Bullet.cs"
 "Assets/Scripts/CameraController.cs"
 "Assets/Scripts/Enemy.cs"
+"Assets/Scripts/Shop.cs"
 "Assets/Scripts/Tile.cs"
 "Assets/Scripts/Turret.cs"
 "Assets/Scripts/WaveSpawner.cs"

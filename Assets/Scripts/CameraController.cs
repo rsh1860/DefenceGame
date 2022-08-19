@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    private bool isMove = true;
+
     public float moveSpeed = 10f;
 
     public float borderWidth = 10f;
@@ -21,6 +23,15 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isMove = !isMove;
+        }
+        if (!isMove)
+        {
+            return;
+        }
+
         float mouseX = Input.mousePosition.x;
         float mouseY = Input.mousePosition.y;
 

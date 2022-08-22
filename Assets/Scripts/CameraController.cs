@@ -58,15 +58,5 @@ public class CameraController : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
         transform.position = pos;
 
-        /*
-        if (scroll> 0)
-        {
-            transform.Translate(Vector3.forward * Time.deltaTime * scrollSpeed, Space.Self);
-        }
-        if (scroll < 0)
-        {
-            transform.Translate(Vector3.back * Time.deltaTime * scrollSpeed, Space.Self);
-        }
-        */
     }
 }

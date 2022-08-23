@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2538571643664477891}
-  - component: {fileID: 5408863178040193964}
+  - component: {fileID: 7768476850002892174}
   m_Layer: 0
   m_Name: Missile
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!114 &5408863178040193964
+--- !u!114 &7768476850002892174
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,11 +42,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2538571643664477888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e8c1a0fa3482a54d863f9a1a93f1b10, type: 3}
+  m_Script: {fileID: 11500000, guid: c2fb778d6b87b7e47a67345be574762c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 50
-  impactPrefab: {fileID: 573425509693789693, guid: d15d022ae97c3f74a824f78341c6424e, type: 3}
+  impactPrefab: {fileID: 6989701366287248645, guid: db54d23cf0e210a40ada036197d91e7b, type: 3}
+  damageRange: 7
 --- !u!1 &8872976707144522029
 GameObject:
   m_ObjectHideFlags: 0

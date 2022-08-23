@@ -43,7 +43,7 @@ public class MissileLauncher : MonoBehaviour
     {
         GameObject missileGo = (GameObject)Instantiate(missilePrefab, firePoint.position, firePoint.rotation);
 
-        Missile missile = missileGo.GetComponent<Missile>();
+        Bullet missile = missileGo.GetComponent<Bullet>();
 
         if (missile != null)
             missile.SetTarget(target);

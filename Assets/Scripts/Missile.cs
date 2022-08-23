@@ -8,6 +8,8 @@ public class Missile : MonoBehaviour
 
     public float moveSpeed = 50f;
 
+    public float damageRange = 7f;
+
     public GameObject impactPrefab;
 
     // Start is called before the first frame update
@@ -45,12 +47,26 @@ public class Missile : MonoBehaviour
         GameObject eff = (GameObject)Instantiate(impactPrefab, this.transform.position, Quaternion.identity);
         Destroy(eff.gameObject, 2f);
 
-        Destroy(target.gameObject);
+        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, damageRange);
+        foreach (Collider collider in hitColliders)
+        {
+            if (collider.tag == "Enemy")
+            {
+                Destroy(collider.gameObject);
+            }
+        }    
+
         Destroy(this.gameObject);
     }
 
     public void SetTarget(Transform _target)
     {
         target = _target;
-    }    
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(this.transform.position, damageRange);
+    }
 }

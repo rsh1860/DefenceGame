@@ -293,6 +293,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9bd7875d05f6049b5c73b4c8689e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basicTurret:
+    prefab: {fileID: 7997167328737077132, guid: 34f2e78bb4434044aaede99a48b5bc82, type: 3}
+    price: 100
+  missileLauncher:
+    prefab: {fileID: 2547457966407469595, guid: d8db5ca7ecec3ba408f6e223d1566d2b, type: 3}
+    price: 250
 --- !u!1001 &67971139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -404,7 +410,7 @@ Transform:
   - {fileID: 878618336}
   - {fileID: 1610585917}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &89933377
 MonoBehaviour:
@@ -717,7 +723,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &279668810
 PrefabInstance:
@@ -1276,7 +1282,7 @@ Transform:
   - {fileID: 1282429845}
   - {fileID: 1397968196}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &635966709
 PrefabInstance:
@@ -1615,7 +1621,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &748620630
 PrefabInstance:
@@ -1796,6 +1802,51 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2953348621892122808, guid: 8d6649256eddae04f9783c7a1d7e6f15, type: 3}
   m_PrefabInstance: {fileID: 893223817}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &898197101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 898197102}
+  - component: {fileID: 898197103}
+  m_Layer: 0
+  m_Name: GameMaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &898197102
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898197101}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 244, y: 255, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &898197103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898197101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10e585c0e0b4d8b499651b69e6dc31fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMoney: 400
 --- !u!1001 &907470856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1961,7 +2012,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &936056633
 PrefabInstance:
@@ -2194,7 +2245,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -2520,7 +2571,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 47135854}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: PurchaseBasicTurret
+        m_MethodName: SelectBasicTurret
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2969,7 +3020,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 200}
+  m_AnchoredPosition: {x: 0, y: 220}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1199550171
@@ -3708,7 +3759,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 47135854}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: PurchaseMissileLauncher
+        m_MethodName: SelectMissileLauncher
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4502,7 +4553,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1611045413
 MonoBehaviour:
@@ -4516,8 +4567,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc14ddab79adfe48ba053453b4170b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicTurretPrefab: {fileID: 7997167328737077132, guid: 34f2e78bb4434044aaede99a48b5bc82, type: 3}
-  missileLauncherPrefab: {fileID: 2547457966407469595, guid: d8db5ca7ecec3ba408f6e223d1566d2b, type: 3}
 --- !u!1001 &1611686192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4732,7 +4781,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1744599603
 PrefabInstance:
@@ -4965,7 +5014,7 @@ Transform:
   - {fileID: 936056634}
   - {fileID: 1535172107}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1785853891
 PrefabInstance:
@@ -5358,7 +5407,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1884878481
 PrefabInstance:
@@ -5817,7 +5866,7 @@ RectTransform:
   - {fileID: 1199550170}
   - {fileID: 47135849}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

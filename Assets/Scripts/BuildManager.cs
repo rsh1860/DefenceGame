@@ -18,23 +18,41 @@ public class BuildManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private GameObject turretToBuild;
+    private TurretBlueprint turretToBuildBlueprint;
 
-    public GameObject basicTurretPrefab;
-    public GameObject missileLauncherPrefab;
+    //TurretBlueprint로 관리
+    //public GameObject basicTurretPrefab;
+    //public GameObject missileLauncherPrefab;
 
     private void Start()
     {
         //turretToBuild = basicTurretPrefab;
     }
 
-    public GameObject GetTurretToBuild()
+    public void OnBuildTurret(Tile tile)
     {
-        return turretToBuild;
+        /* if (!PlayerStats.HaveMoney(turretToBuildBlueprint.price))
+         {
+             Debug.Log("돈이 부족합니다.");
+             return;
+         }*/
+
+        if (PlayerStats.UseMoney(turretToBuildBlueprint.price))
+        {
+            GameObject _turret = (GameObject)Instantiate(turretToBuildBlueprint.prefab, tile.GetBuildPosition(), Quaternion.identity);
+            tile.turret = _turret;
+
+            Debug.Log($"터렛 건설 후 남은 돈: {PlayerStats.money}");
+        }              
     }
 
-    public void SetTurretToBuild(GameObject turret)
+    public TurretBlueprint GetTurretToBuild()
     {
-        turretToBuild = turret;
+        return turretToBuildBlueprint;
+    }
+
+    public void SetTurretToBuild(TurretBlueprint turret)
+    {
+        turretToBuildBlueprint = turret;
     }
 }

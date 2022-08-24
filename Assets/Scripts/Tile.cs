@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class Tile : MonoBehaviour
 {
-    private GameObject turret;
+    public GameObject turret;
 
     private Renderer render;
 
@@ -44,7 +44,12 @@ public class Tile : MonoBehaviour
             return;
         }
 
-        turret = (GameObject)Instantiate(BuildManager.instance.GetTurretToBuild(), this.transform.position + offsetPos, Quaternion.identity);
+        BuildManager.instance.OnBuildTurret(this);
+    }
+
+    public Vector3 GetBuildPosition()
+    {
+        return this.transform.position + offsetPos;
     }
 
     private void OnMouseEnter()

@@ -5,24 +5,28 @@ using UnityEngine.EventSystems;
 
 public class Tile : MonoBehaviour
 {
+    private BuildManager buildManager;
+
     public GameObject turret;
 
     private Renderer render;
-
-    public Color hoverColor;
-
-    private Color originColor;
-
-    public Vector3 offsetPos;
 
     public Material hoverMaterial;
 
     private Material startMaterial;
 
+    public Material noMoneyMaterial;
+
+    private TurretBlueprint turretBluePrint;
+
+    public GameObject buildEffectPrefab;
+
+    public Vector3 offsetPos;
+
     private void Start()
     {
+        buildManager = BuildManager.instance;
         render = transform.GetComponent<Renderer>();
-        originColor = render.material.color;
 
         startMaterial = render.material;
     }
@@ -39,12 +43,12 @@ public class Tile : MonoBehaviour
             return;
         }
         //버튼을 누르지 않았을 때 설치하는 것을 막기
-        if (BuildManager.instance.GetTurretToBuild() == null) 
+        if (buildManager.GetTurretToBuild() == null) 
         {
             return;
         }
 
-        BuildManager.instance.OnBuildTurret(this);
+        buildManager.OnBuildTurret(this);
     }
 
     public Vector3 GetBuildPosition()
@@ -58,18 +62,20 @@ public class Tile : MonoBehaviour
         {
             return;
         }
-        if (BuildManager.instance.GetTurretToBuild() == null)
+        if (buildManager.GetTurretToBuild() == null)
         {
             return;
         }
-
-        //render.material.color = hoverColor;
+        if (!PlayerStats.HaveMoney(buildManager.GetTurretToBuild().price))
+        {
+            render.material = noMoneyMaterial;
+            return;
+        }
         render.material = hoverMaterial;
     }
 
     private void OnMouseExit()
     {
-        //render.material.color = originColor;
         render.material = startMaterial;
     }
 }

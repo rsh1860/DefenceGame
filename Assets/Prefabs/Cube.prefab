@@ -116,9 +116,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b4ea5356b7dad479497667463eb72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColor: {r: 0.5, g: 0.48820755, b: 0.48820755, a: 0}
+  turret: {fileID: 0}
   offsetPos: {x: 0, y: 0.5, z: 0}
   hoverMaterial: {fileID: 2100000, guid: a853c8bbbf5cd0144afd273fea31fd4f, type: 2}
+  noMoneyMaterial: {fileID: 2100000, guid: 48ad5cc0eeae0bc498c6e41ae5180faa, type: 2}
+  buildEffectPrefab: {fileID: 3500779840791183517, guid: cffe0849081fbd94d8468b340924a217, type: 3}
 --- !u!222 &4593921021408463994
 CanvasRenderer:
   m_ObjectHideFlags: 0

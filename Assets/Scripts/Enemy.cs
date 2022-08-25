@@ -10,15 +10,25 @@ public class Enemy : MonoBehaviour
 
     private int wayPointIndex = 0;
 
+    public static int hp;
+    public int startHp = 100;
+
     // Start is called before the first frame update
     void Start()
     {
+        hp = startHp;
         target = WayPoints.points[wayPointIndex];
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (hp <= 0)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
         Vector3 dir = target.position - this.transform.position;
         transform.Translate(dir.normalized * Time.deltaTime * speed);
 
@@ -34,7 +44,7 @@ public class Enemy : MonoBehaviour
     {
         if (wayPointIndex == WayPoints.points.Length - 1)
         {
-            Debug.Log("Á¾Á¡ µµÂø!!");
+            PlayerStats.lives -= 1;
             Destroy(this.gameObject);
             return;
         }

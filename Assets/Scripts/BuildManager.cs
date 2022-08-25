@@ -6,6 +6,8 @@ public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
 
+    public GameObject buildEffectPrefab;
+
     private void Awake()
     {
         if (instance != null)
@@ -42,7 +44,8 @@ public class BuildManager : MonoBehaviour
             GameObject _turret = (GameObject)Instantiate(turretToBuildBlueprint.prefab, tile.GetBuildPosition(), Quaternion.identity);
             tile.turret = _turret;
 
-            Debug.Log($"ÅÍ·¿ °Ç¼³ ÈÄ ³²Àº µ·: {PlayerStats.money}");
+            GameObject effect = Instantiate(buildEffectPrefab, tile.GetBuildPosition(), Quaternion.identity);
+            Destroy(effect.gameObject, 2f);
         }              
     }
 

@@ -10,25 +10,23 @@ public class Enemy : MonoBehaviour
 
     private int wayPointIndex = 0;
 
-    public static int hp;
-    public int startHp = 100;
+    public float enemyHp;
+    public float startEnemyHp = 100f;
+
+    public int rewardMoney = 50;
+
+    public GameObject deathEffectPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
-        hp = startHp;
+        enemyHp = startEnemyHp;
         target = WayPoints.points[wayPointIndex];
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hp <= 0)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-
         Vector3 dir = target.position - this.transform.position;
         transform.Translate(dir.normalized * Time.deltaTime * speed);
 
@@ -44,12 +42,37 @@ public class Enemy : MonoBehaviour
     {
         if (wayPointIndex == WayPoints.points.Length - 1)
         {
-            PlayerStats.lives -= 1;
-            Destroy(this.gameObject);
+            EndPoint();
             return;
         }
 
         wayPointIndex++;
         target = WayPoints.points[wayPointIndex];
+    }
+
+    private void EndPoint()
+    {
+        PlayerStats.UseLife(1);
+        Destroy(this.gameObject);
+    }
+
+    public void TakeDamage(float amount)
+    {
+        enemyHp -= amount;
+
+        if (enemyHp <= 0)
+        {
+            Death();
+        }
+    }
+
+    private void Death()
+    {
+        PlayerStats.AddMoney(rewardMoney);
+
+        GameObject deathEffect = Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
+
+        Destroy(deathEffect, 2f);
+        Destroy(gameObject);
     }
 }

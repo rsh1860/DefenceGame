@@ -12,6 +12,8 @@ public class Bullet : MonoBehaviour
 
     public float damageRange = 7f;
 
+    public float attackDamage = 50f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,7 +75,8 @@ public class Bullet : MonoBehaviour
 
     private void Damage(Transform enemy)
     {
-        Destroy(enemy.gameObject);
+        enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+        //Destroy(enemy.gameObject);
     }
 
     public void SetTarget(Transform _target)

@@ -14,8 +14,18 @@ public class PlayerStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayDataInit();
+    }
+
+    public void PlayDataInit()
+    {
         money = startMoney;
         lives = startLife;
+    }
+
+    public static void AddMoney(int amount)
+    {
+        money += amount;
     }
 
     public static bool UseMoney(int amount)
@@ -33,5 +43,15 @@ public class PlayerStats : MonoBehaviour
     public static bool HaveMoney(int amount)
     {
         return money >= amount;
+    }
+
+    public static void UseLife(int amount)
+    {
+        lives -= amount;
+    }    
+
+    public static void AddLife(int amount)
+    {
+        lives += amount;
     }
 }

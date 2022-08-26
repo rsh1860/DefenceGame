@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static bool isGameOver = false;
+
     void Start()
     {
         
@@ -12,9 +14,20 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerStats.lives == 0)
+        if (isGameOver)
+            return;
+
+        if (PlayerStats.lives <= 0 && !isGameOver)
         {
-            Debug.Log("GameOver");
+            GameOver();
         }
+
+    }
+
+    private void GameOver()
+    {
+        isGameOver = true;
+
+        Debug.Log("GameOver");
     }
 }

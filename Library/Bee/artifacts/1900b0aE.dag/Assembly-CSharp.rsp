@@ -341,6 +341,7 @@
 "Assets/Scripts/BuildManager.cs"
 "Assets/Scripts/Bullet.cs"
 "Assets/Scripts/CameraController.cs"
+"Assets/Scripts/DrawLivesUI.cs"
 "Assets/Scripts/DrawMoneyUI.cs"
 "Assets/Scripts/Enemy.cs"
 "Assets/Scripts/GameManager.cs"

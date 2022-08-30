@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static bool isGameOver = false;
 
+    public bool isCheating = false;
+
     void Start()
     {
         
@@ -22,6 +24,10 @@ public class GameManager : MonoBehaviour
             GameOver();
         }
 
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            ShowMeTheMoney();
+        }
     }
 
     private void GameOver()
@@ -30,4 +36,13 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("GameOver");
     }
+
+    private void ShowMeTheMoney()
+    {
+        if (!isCheating)
+            return;
+
+        PlayerStats.AddMoney(100000);
+    }
+
 }

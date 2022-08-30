@@ -22,6 +22,11 @@ public class Turret : MonoBehaviour
 
     public float turnSpeed = 5f;
 
+    [Header("Laser Beamer")]
+    public bool isLaser = false;
+    public LineRenderer render;
+
+
     //public float timerSearch = 0.5f;
     //private float countdown = 0f;
 
@@ -45,10 +50,25 @@ public class Turret : MonoBehaviour
         */
 
         if (target == null)
+        {
+            if (isLaser)
+            {
+                if (render.enabled)
+                {
+                    render.enabled = false;
+                }
+            }
+
             return;
+        }    
 
         LockOn();
         
+        if (isLaser)
+        {
+            Laser();
+            return;
+        }
         if (fireCountdown <= 0f)
         {
             Shoot();
@@ -57,6 +77,17 @@ public class Turret : MonoBehaviour
         }
         fireCountdown -= Time.deltaTime;
 
+    }
+
+    private void Laser()
+    {
+        if (!render.enabled)
+        {
+            render.enabled = true;
+        }
+
+        render.SetPosition(0, firePoint.position);
+        render.SetPosition(1, target.transform.position);
     }
 
     private void Shoot()

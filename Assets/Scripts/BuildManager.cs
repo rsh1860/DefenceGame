@@ -41,7 +41,8 @@ public class BuildManager : MonoBehaviour
 
         if (PlayerStats.UseMoney(turretToBuildBlueprint.price))
         {
-            GameObject _turret = (GameObject)Instantiate(turretToBuildBlueprint.prefab, tile.GetBuildPosition(), Quaternion.identity);
+            Vector3 buildPos = tile.GetBuildPosition() + turretToBuildBlueprint.offsetPos;
+            GameObject _turret = (GameObject)Instantiate(turretToBuildBlueprint.prefab, buildPos, Quaternion.identity);
             tile.turret = _turret;
 
             GameObject effect = Instantiate(buildEffectPrefab, tile.GetBuildPosition(), Quaternion.identity);

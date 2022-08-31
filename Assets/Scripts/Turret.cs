@@ -25,7 +25,12 @@ public class Turret : MonoBehaviour
     [Header("Laser Beamer")]
     public bool isLaser = false;
     public LineRenderer render;
+    public ParticleSystem laserEffect;
+    public Light laserLightEffect;
 
+    private float damageOverTime = 30f;
+
+    public float slowRate = 0.4f;
 
     //public float timerSearch = 0.5f;
     //private float countdown = 0f;
@@ -56,6 +61,8 @@ public class Turret : MonoBehaviour
                 if (render.enabled)
                 {
                     render.enabled = false;
+                    laserEffect.Stop();
+                    laserLightEffect.enabled = false;
                 }
             }
 
@@ -84,10 +91,21 @@ public class Turret : MonoBehaviour
         if (!render.enabled)
         {
             render.enabled = true;
+            laserEffect.Play();
+            laserLightEffect.enabled = true;
         }
+
+        float damage = damageOverTime * Time.deltaTime;
+        Enemy e = target.GetComponent<Enemy>();
+        e.TakeDamage(damage);
+        e.Slow(slowRate);
 
         render.SetPosition(0, firePoint.position);
         render.SetPosition(1, target.transform.position);
+
+        Vector3 dir = firePoint.position - target.transform.position;
+        laserEffect.transform.position = target.transform.position + dir.normalized;
+        laserEffect.transform.rotation = Quaternion.LookRotation(dir);
     }
 
     private void Shoot()

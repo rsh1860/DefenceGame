@@ -344,6 +344,7 @@
 "Assets/Scripts/DrawLivesUI.cs"
 "Assets/Scripts/DrawMoneyUI.cs"
 "Assets/Scripts/Enemy.cs"
+"Assets/Scripts/EnemyMove.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/MissileLauncher.cs"
 "Assets/Scripts/PlayerStats.cs"

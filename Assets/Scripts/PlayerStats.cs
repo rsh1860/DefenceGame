@@ -7,9 +7,11 @@ public class PlayerStats : MonoBehaviour
 {
     public static int money;
     public static int lives;
+    public static int rounds;
 
     public int startMoney = 400;
     public int startLife = 10;
+    public int startRound = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,7 @@ public class PlayerStats : MonoBehaviour
     {
         money = startMoney;
         lives = startLife;
+        rounds = startRound;
     }
 
     public static void AddMoney(int amount)
@@ -53,5 +56,10 @@ public class PlayerStats : MonoBehaviour
     public static void AddLife(int amount)
     {
         lives += amount;
+    }
+
+    public static void AddRound(int amount)
+    {
+        rounds += amount;
     }
 }

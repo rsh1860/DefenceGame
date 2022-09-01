@@ -40,6 +40,9 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
+        //if (!GameManager.isGameOver)
+            PlayerStats.AddRound(1);
+
         waveCount++;
 
         for (int i = 0; i < waveCount; i++)

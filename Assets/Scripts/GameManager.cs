@@ -8,9 +8,16 @@ public class GameManager : MonoBehaviour
 
     public bool isCheating = false;
 
+    public GameObject gameoverUI;
+
     void Start()
     {
-        
+        InitData();
+    }
+
+    private void InitData()
+    {
+        isGameOver = false;
     }
 
     // Update is called once per frame
@@ -19,22 +26,21 @@ public class GameManager : MonoBehaviour
         if (isGameOver)
             return;
 
-        if (PlayerStats.lives <= 0 && !isGameOver)
-        {
-            GameOver();
-        }
-
         if (Input.GetKeyDown(KeyCode.P))
         {
             ShowMeTheMoney();
         }
-    }
 
-    private void GameOver()
-    {
-        isGameOver = true;
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            if (isCheating)
+                GameOver();
+        }
 
-        Debug.Log("GameOver");
+        if (PlayerStats.lives <= 0 && !isGameOver)
+        {
+            GameOver();
+        }
     }
 
     private void ShowMeTheMoney()
@@ -45,4 +51,11 @@ public class GameManager : MonoBehaviour
         PlayerStats.AddMoney(100000);
     }
 
+    private void GameOver()
+    {
+        isGameOver = true;
+
+        gameoverUI.SetActive(true);
+    }
 }
+

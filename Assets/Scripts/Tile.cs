@@ -40,9 +40,11 @@ public class Tile : MonoBehaviour
         //중복된 자리에 설치하는 것을 막기
         if (turret != null) 
         {
+            buildManager.SelectTile(this);
+
             return;
         }
-        //버튼을 누르지 않았을 때 설치하는 것을 막기
+        //터렛버튼을 누르지 않았을 때 설치하는 것을 막기
         if (buildManager.GetTurretToBuild() == null) 
         {
             return;

@@ -351,6 +351,7 @@
 "Assets/Scripts/PlayerStats.cs"
 "Assets/Scripts/Shop.cs"
 "Assets/Scripts/Tile.cs"
+"Assets/Scripts/TileUI.cs"
 "Assets/Scripts/Turret.cs"
 "Assets/Scripts/TurretBlueprint.cs"
 "Assets/Scripts/WaveSpawner.cs"

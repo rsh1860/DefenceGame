@@ -26,6 +26,20 @@ public class BuildManager : MonoBehaviour
     //public GameObject basicTurretPrefab;
     //public GameObject missileLauncherPrefab;
 
+    /*
+    public bool HasBuildMoney
+    {
+        get
+        {
+            return PlayerStats.money >= turretToBuildBlueprint.price;
+        }
+    }
+    */
+
+    private Tile selectedTile;
+
+    public TileUI tileUI;
+
     private void Start()
     {
         //turretToBuild = basicTurretPrefab;
@@ -50,6 +64,23 @@ public class BuildManager : MonoBehaviour
         }              
     }
 
+    public void SelectTile(Tile tile)
+    {
+        //저장된 타일을 다시 선택
+        if (selectedTile == tile)
+        {
+            DeSelectedTile();
+            
+            return;
+        }
+
+        selectedTile = tile;
+
+        turretToBuildBlueprint = null;
+
+        tileUI.ShowTileUI(tile);
+    }
+
     public TurretBlueprint GetTurretToBuild()
     {
         return turretToBuildBlueprint;
@@ -58,5 +89,12 @@ public class BuildManager : MonoBehaviour
     public void SetTurretToBuild(TurretBlueprint turret)
     {
         turretToBuildBlueprint = turret;
+        DeSelectedTile();
+    }
+
+    private void DeSelectedTile()
+    {
+        tileUI.HideTileUI();
+        selectedTile = null;
     }
 }

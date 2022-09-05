@@ -113,4 +113,4 @@ MonoBehaviour:
   moveSpeed: 70
   impactPrefab: {fileID: 573425509693789693, guid: f434ae22ef9d97b4ab05ae3c071a7df7, type: 3}
   damageRange: 0
-  isMissile: 0
+  attackDamage: 50

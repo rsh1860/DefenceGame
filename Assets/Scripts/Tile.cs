@@ -9,6 +9,8 @@ public class Tile : MonoBehaviour
 
     public GameObject turret;
 
+    public TurretBlueprint blueprint;
+
     private Renderer render;
 
     public Material hoverMaterial;
@@ -22,6 +24,8 @@ public class Tile : MonoBehaviour
     public GameObject buildEffectPrefab;
 
     public Vector3 offsetPos;
+
+    public bool isUpgrade = false;
 
     private void Start()
     {
@@ -50,7 +54,46 @@ public class Tile : MonoBehaviour
             return;
         }
 
-        buildManager.OnBuildTurret(this);
+        OnBuildTurret(this);
+    }
+
+    public void OnBuildTurret(Tile tile)
+    {
+        /* if (!PlayerStats.HaveMoney(turretToBuildBlueprint.price))
+         {
+             Debug.Log("돈이 부족합니다.");
+             return;
+         }*/
+
+        if (PlayerStats.UseMoney(buildManager.turretToBuildBlueprint.price))
+        {
+            Vector3 buildPos = this.GetBuildPosition() + buildManager.turretToBuildBlueprint.offsetPos;
+            GameObject _turret = (GameObject)Instantiate(buildManager.turretToBuildBlueprint.prefab, buildPos, Quaternion.identity);
+            this.turret = _turret;
+
+            blueprint = buildManager.turretToBuildBlueprint;
+
+            GameObject effect = Instantiate(buildManager.buildEffectPrefab, buildPos, Quaternion.identity);
+            Destroy(effect.gameObject, 2f);
+        }
+    }
+
+    public void UpgradeTurret()
+    {
+        if (PlayerStats.UseMoney(blueprint.upgradePrice))
+        {
+            Destroy(turret.gameObject);
+            turret = null;
+
+            Vector3 buildPos = this.GetBuildPosition() + blueprint.offsetPos;
+            GameObject _turret = (GameObject)Instantiate(blueprint.upgradePrefab, buildPos, Quaternion.identity);
+            this.turret = _turret;
+
+            isUpgrade = true;
+
+            GameObject effect = Instantiate(buildManager.buildEffectPrefab, buildPos, Quaternion.identity);
+            Destroy(effect.gameObject, 2f);
+        }
     }
 
     public Vector3 GetBuildPosition()

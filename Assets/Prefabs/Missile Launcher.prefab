@@ -71,6 +71,12 @@ MonoBehaviour:
   firePoint: {fileID: 7776903397523764089}
   partToRotate: {fileID: 440011497289648304}
   turnSpeed: 10
+  isLaser: 0
+  render: {fileID: 0}
+  laserEffect: {fileID: 0}
+  laserLightEffect: {fileID: 0}
+  damageOverTime: 30
+  slowRate: 0.4
 --- !u!1 &2547457966407469597
 GameObject:
   m_ObjectHideFlags: 0

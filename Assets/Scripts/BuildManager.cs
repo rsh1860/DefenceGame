@@ -8,6 +8,8 @@ public class BuildManager : MonoBehaviour
 
     public GameObject buildEffectPrefab;
 
+    public GameObject sellEffectPrefab;
+
     private void Awake()
     {
         if (instance != null)
@@ -43,6 +45,7 @@ public class BuildManager : MonoBehaviour
     private void Start()
     {
         //turretToBuild = basicTurretPrefab;
+        turretToBuildBlueprint = null;
     }
 
     public void SelectTile(Tile tile)
@@ -73,7 +76,7 @@ public class BuildManager : MonoBehaviour
         DeSelectedTile();
     }
 
-    private void DeSelectedTile()
+    public void DeSelectedTile()
     {
         tileUI.HideTileUI();
         selectedTile = null;

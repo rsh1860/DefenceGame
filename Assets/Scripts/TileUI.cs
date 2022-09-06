@@ -14,6 +14,8 @@ public class TileUI : MonoBehaviour
 
     public TextMeshProUGUI upgradePrice;
 
+    public TextMeshProUGUI sellPrice;
+
     public void ShowTileUI(Tile tile)
     {
         selectTile = tile;
@@ -30,6 +32,7 @@ public class TileUI : MonoBehaviour
             upgradePrice.text = selectTile.blueprint.upgradePrice.ToString() + "G";
             upgradeButton.interactable = true;
         }
+        sellPrice.text = selectTile.blueprint.GetSellPrice().ToString() + "G";
 
         ui.SetActive(true);
     }
@@ -46,12 +49,20 @@ public class TileUI : MonoBehaviour
             return;
         }
 
+        if (!PlayerStats.HaveMoney(selectTile.blueprint.upgradePrice))
+        {
+            Debug.Log("업그레이드에 필요한 돈이 부족합니다.");
+            return;
+        }
+
         selectTile.UpgradeTurret();
         HideTileUI();
     }
 
     public void Sell()
     {
-        Debug.Log("Sell");
+        selectTile.SellTurret();
+        BuildManager.instance.DeSelectedTile();
+        HideTileUI();
     }
 }

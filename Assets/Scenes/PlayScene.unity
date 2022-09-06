@@ -573,14 +573,14 @@ MonoBehaviour:
   missileLauncher:
     prefab: {fileID: 2547457966407469595, guid: d8db5ca7ecec3ba408f6e223d1566d2b, type: 3}
     price: 250
-    upgradePrefab: {fileID: 0}
-    upgradePrice: 0
+    upgradePrefab: {fileID: 2547457966407469595, guid: dc9b1d8040ed0064e974514ac90fcba1, type: 3}
+    upgradePrice: 400
     offsetPos: {x: 0, y: 0, z: 0}
   laserBeamer:
     prefab: {fileID: 5125942032205245481, guid: af21615f1c6199440a91832f40efd041, type: 3}
     price: 350
-    upgradePrefab: {fileID: 0}
-    upgradePrice: 0
+    upgradePrefab: {fileID: 5125942032205245481, guid: 814ac233f4db3064b85056a667fa9eb7, type: 3}
+    upgradePrice: 500
     offsetPos: {x: 0, y: -0.5, z: 0}
 --- !u!1 &51891546
 GameObject:
@@ -2926,7 +2926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMoney: 400
-  startLife: 1
+  startLife: 10
   startRound: 0
 --- !u!114 &898197104
 MonoBehaviour:
@@ -7262,6 +7262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildEffectPrefab: {fileID: 3500779840791183517, guid: cffe0849081fbd94d8468b340924a217, type: 3}
+  sellEffectPrefab: {fileID: 5621646340968413425, guid: 32da812060d136a4d82f5267c97ffdb7, type: 3}
   turretToBuildBlueprint:
     prefab: {fileID: 0}
     price: 0
@@ -8772,6 +8773,7 @@ MonoBehaviour:
   ui: {fileID: 51891546}
   upgradeButton: {fileID: 11269870}
   upgradePrice: {fileID: 1977108644}
+  sellPrice: {fileID: 1471083013}
 --- !u!1001 &1905863603
 PrefabInstance:
   m_ObjectHideFlags: 0

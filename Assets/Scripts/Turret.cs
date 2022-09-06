@@ -28,7 +28,7 @@ public class Turret : MonoBehaviour
     public ParticleSystem laserEffect;
     public Light laserLightEffect;
 
-    private float damageOverTime = 30f;
+    public float damageOverTime = 30f;
 
     public float slowRate = 0.4f;
 

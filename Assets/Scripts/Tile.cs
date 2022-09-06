@@ -21,8 +21,6 @@ public class Tile : MonoBehaviour
 
     private TurretBlueprint turretBluePrint;
 
-    public GameObject buildEffectPrefab;
-
     public Vector3 offsetPos;
 
     public bool isUpgrade = false;
@@ -51,6 +49,7 @@ public class Tile : MonoBehaviour
         //터렛버튼을 누르지 않았을 때 설치하는 것을 막기
         if (buildManager.GetTurretToBuild() == null) 
         {
+            Debug.Log("터렛을 선택해주세요.");
             return;
         }
 
@@ -94,6 +93,21 @@ public class Tile : MonoBehaviour
             GameObject effect = Instantiate(buildManager.buildEffectPrefab, buildPos, Quaternion.identity);
             Destroy(effect.gameObject, 2f);
         }
+    }
+
+    public void SellTurret()
+    {
+        Destroy(turret.gameObject);
+
+        Vector3 buildPos = this.GetBuildPosition() + blueprint.offsetPos;
+        GameObject effect = Instantiate(buildManager.sellEffectPrefab, buildPos, Quaternion.identity);
+        Destroy(effect.gameObject, 2f);
+
+        PlayerStats.AddMoney(blueprint.GetSellPrice());
+
+        turret = null;
+        blueprint = null;
+        isUpgrade = false;
     }
 
     public Vector3 GetBuildPosition()

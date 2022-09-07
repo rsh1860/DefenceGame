@@ -348,6 +348,7 @@
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/GameOverUI.cs"
 "Assets/Scripts/MissileLauncher.cs"
+"Assets/Scripts/PauseUI.cs"
 "Assets/Scripts/PlayerStats.cs"
 "Assets/Scripts/Shop.cs"
 "Assets/Scripts/Tile.cs"

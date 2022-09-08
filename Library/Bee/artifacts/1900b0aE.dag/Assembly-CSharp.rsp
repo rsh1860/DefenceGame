@@ -347,6 +347,7 @@
 "Assets/Scripts/EnemyMove.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/GameOverUI.cs"
+"Assets/Scripts/MainMenuManager.cs"
 "Assets/Scripts/MissileLauncher.cs"
 "Assets/Scripts/PauseUI.cs"
 "Assets/Scripts/PlayerStats.cs"

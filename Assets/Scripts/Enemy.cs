@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -15,10 +16,17 @@ public class Enemy : MonoBehaviour
 
     public GameObject deathEffectPrefab;
 
+    public Image hpBar;
+
     // Start is called before the first frame update
     void Start()
     {
-        enemyHp = startEnemyHp;
+        enemyHp = startEnemyHp;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+    }
+
+    private void Update()
+    {
+        hpBar.fillAmount = enemyHp/startEnemyHp;
     }
 
     public void Slow(float rate)

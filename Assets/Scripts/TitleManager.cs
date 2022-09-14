@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
+    public SceneFader fader;
+
     public GameObject anyKey;
 
     private bool isShow = false;
@@ -37,7 +39,7 @@ public class TitleManager : MonoBehaviour
 
     private void GoToMenu()
     {
-        SceneManager.LoadScene(loadToScene);
+        fader.FadeTo(loadToScene);
     }
 
     IEnumerator TitleProcess()

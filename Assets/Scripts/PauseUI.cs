@@ -5,7 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class PauseUI : MonoBehaviour
 {
+    public SceneFader fader;
+
     public GameObject pause;
+
+    public string loadToScene = "MainMenu";
 
     private void Update()
     {
@@ -32,12 +36,12 @@ public class PauseUI : MonoBehaviour
     public void Retry()
     {
         Toggle();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        fader.FadeTo(SceneManager.GetActiveScene().name);
     }
 
     public void Menu()
     {
         Toggle();
-        Debug.Log("Menu");
+        fader.FadeTo(loadToScene);
     }
 }

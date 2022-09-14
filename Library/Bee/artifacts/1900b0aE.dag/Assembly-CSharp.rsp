@@ -351,6 +351,7 @@
 "Assets/Scripts/MissileLauncher.cs"
 "Assets/Scripts/PauseUI.cs"
 "Assets/Scripts/PlayerStats.cs"
+"Assets/Scripts/SceneFader.cs"
 "Assets/Scripts/Shop.cs"
 "Assets/Scripts/Tile.cs"
 "Assets/Scripts/TileUI.cs"

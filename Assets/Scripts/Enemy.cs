@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour
 
     public Image hpBar;
 
+    private bool isDeath = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +28,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        hpBar.fillAmount = enemyHp/startEnemyHp;
+        
     }
 
     public void Slow(float rate)
@@ -38,7 +40,9 @@ public class Enemy : MonoBehaviour
     {
         enemyHp -= amount;
 
-        if (enemyHp <= 0)
+        hpBar.fillAmount = enemyHp / startEnemyHp;
+
+        if (enemyHp <= 0 && !isDeath)
         {
             Death();
         }
@@ -46,11 +50,18 @@ public class Enemy : MonoBehaviour
 
     private void Death()
     {
+        if (isDeath)
+            return;
+
+        isDeath = true;
+
         PlayerStats.AddMoney(rewardMoney);
 
         GameObject deathEffect = Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
-
         Destroy(deathEffect, 2f);
+
+        WaveSpawner.enemyAlive--;
+
         Destroy(gameObject);
     }
 }

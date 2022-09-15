@@ -358,6 +358,7 @@
 "Assets/Scripts/TitleManager.cs"
 "Assets/Scripts/Turret.cs"
 "Assets/Scripts/TurretBlueprint.cs"
+"Assets/Scripts/Wave.cs"
 "Assets/Scripts/WaveSpawner.cs"
 "Assets/Scripts/WayPoints.cs"
 "Assets/Scripts/_Missile.cs"

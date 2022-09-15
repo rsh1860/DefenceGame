@@ -5,6 +5,10 @@ using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
+    public static int enemyAlive = 0;
+
+    public Wave[] waves;
+
     public GameObject enemyPrefab;
 
     public Transform start;
@@ -19,16 +23,18 @@ public class WaveSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        enemyAlive = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (enemyAlive > 0)
+            return;
+
         if (countdown <= 0)
         {
             StartCoroutine(SpawnWave());
-
             countdown = spawnTimer;
         }
         countdown -= Time.deltaTime;
@@ -43,17 +49,30 @@ public class WaveSpawner : MonoBehaviour
         //if (!GameManager.isGameOver)
             PlayerStats.AddRound(1);
 
-        waveCount++;
+        Wave wave = waves[waveCount];
 
-        for (int i = 0; i < waveCount; i++)
+        for (int i = 0; i < wave.count; i++)
         {
-            SpawnEnemy();
-            yield return new WaitForSeconds(0.5f);
+            SpawnEnemy(wave.enemyPrefab);
+            yield return new WaitForSeconds(wave.delayTime);
         }
+
+        if (waveCount < waves.Length - 1)
+        {
+            waveCount++;
+        }
+        else
+        {
+            Debug.Log("Level Clear");
+            this.enabled = false;
+        }
+       
     }
 
-    private void SpawnEnemy()
+    private void SpawnEnemy(GameObject prefab)
     {
-        Instantiate(enemyPrefab, start.position, Quaternion.identity);
+        enemyAlive++;
+
+        Instantiate(prefab, start.position, Quaternion.identity);
     }   
 }

@@ -35,7 +35,8 @@ public class SceneFader : MonoBehaviour
             yield return 0;
         }
 
-        this.GetComponent<Canvas>().enabled = false;
+        //이렇게 하는 대신 이미지 컴포넌트에서 Raycast Target 체크 해제
+        //this.GetComponent<Canvas>().enabled = false;
     }
 
     public void FadeTo(string scene)
@@ -52,7 +53,7 @@ public class SceneFader : MonoBehaviour
             t += Time.deltaTime;
             float a = curve.Evaluate(t);
             img.color = new Color(0f, 0f, 0f, a);
-
+        
             yield return 0;
         }
 

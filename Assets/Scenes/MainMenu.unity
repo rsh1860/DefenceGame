@@ -738,7 +738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8268c3f3f98e2774b93b23cbc303e047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadToScene: PlayScene
+  loadToScene: LevelSelect
   fader: {fileID: 346298067}
 --- !u!1 &1590735411
 GameObject:
@@ -1416,6 +1416,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4807554132784394457, guid: 5c93e6e64d4c3e04582045156a32690c, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4807554133638322290, guid: 5c93e6e64d4c3e04582045156a32690c, type: 3}
       propertyPath: m_Name
       value: Fader

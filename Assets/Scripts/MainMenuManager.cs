@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public string loadToScene = "PlayScene";
+    public string loadToScene = "LevelSelect";
 
     public SceneFader fader;
 

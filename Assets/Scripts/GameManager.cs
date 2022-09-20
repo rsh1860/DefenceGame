@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject gameoverUI;
 
+    public int unlockLevel = 2;
+
+    public SceneFader fader;
+    public string nextLevel = "Level02";
+
     void Start()
     {
         InitData();
@@ -57,6 +62,17 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
 
         gameoverUI.SetActive(true);
+    }
+
+    public void LevelClear()
+    {
+        int nowLevel = PlayerPrefs.GetInt("NowLevel", 1);
+        if (unlockLevel > nowLevel)
+            PlayerPrefs.SetInt("NowLevel", unlockLevel);
+
+        unlockLevel++;
+
+        fader.FadeTo(nextLevel);
     }
 }
 

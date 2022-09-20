@@ -1725,6 +1725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b3b57a79c1b414c89be3ba993d53c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 898197104}
   waves:
   - enemyPrefab: {fileID: 3826911901242334381, guid: 2b087c2e552c6d44fb9fa9d8892719c1, type: 3}
     count: 1
@@ -3590,6 +3591,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCheating: 1
   gameoverUI: {fileID: 1693825813}
+  unlockLevel: 2
+  fader: {fileID: 1442026882}
+  nextLevel: Level02
 --- !u!1 &906121780
 GameObject:
   m_ObjectHideFlags: 0

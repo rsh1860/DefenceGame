@@ -5,6 +5,8 @@ using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
+    public GameManager gameManager;
+
     public static int enemyAlive = 0;
 
     public Wave[] waves;
@@ -63,7 +65,7 @@ public class WaveSpawner : MonoBehaviour
         }
         else
         {
-            Debug.Log("Level Clear");
+            gameManager.LevelClear();
             this.enabled = false;
         }
        

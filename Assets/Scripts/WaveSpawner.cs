@@ -34,6 +34,12 @@ public class WaveSpawner : MonoBehaviour
         if (enemyAlive > 0)
             return;
 
+        if (waveCount == waves.Length-1)
+        {
+            gameManager.LevelClear();
+            this.enabled = false;
+        }
+
         if (countdown <= 0)
         {
             StartCoroutine(SpawnWave());
@@ -59,16 +65,7 @@ public class WaveSpawner : MonoBehaviour
             yield return new WaitForSeconds(wave.delayTime);
         }
 
-        if (waveCount < waves.Length - 1)
-        {
-            waveCount++;
-        }
-        else
-        {
-            gameManager.LevelClear();
-            this.enabled = false;
-        }
-       
+        waveCount++;
     }
 
     private void SpawnEnemy(GameObject prefab)

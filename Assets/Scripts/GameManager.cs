@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public bool isCheating = false;
 
     public GameObject gameoverUI;
+    public GameObject levelClearUI;
 
     public int unlockLevel = 2;
 
@@ -70,9 +71,7 @@ public class GameManager : MonoBehaviour
         if (unlockLevel > nowLevel)
             PlayerPrefs.SetInt("NowLevel", unlockLevel);
 
-        unlockLevel++;
-
-        fader.FadeTo(nextLevel);
+        levelClearUI.SetActive(true);
     }
 }
 
